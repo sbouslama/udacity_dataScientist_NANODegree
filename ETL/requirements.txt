@@ -1,0 +1,4 @@
+nltk
+sqlalchemy
+sklearn
+gensim

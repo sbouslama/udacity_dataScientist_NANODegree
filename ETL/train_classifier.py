@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 import re
 import random
 import sys
+import pickle
 from sklearn.pipeline import Pipeline
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
@@ -111,8 +112,8 @@ def build_model(X_train,y_train):
         X_Train: Training features for use by GridSearchCV
         y_train: Training labels for use by GridSearchCV
     OUTPUT
-        Returns a pipeline model that has gone through tokenization, count vectorization, 
-        TFIDTransofmration and created into a ML model
+        Returns a pipeline model that has gone through cleaning, word embedding using doc2vec, 
+        and created into a ML model
     '''
     pipeline = Pipeline(steps = [
        ('processing', TextProcessor()),
@@ -149,6 +150,7 @@ def evaluate_model(pipeline, X_test, Y_test):
         print(Y_test.keys()[i])
         print(classification_report(Y_test.iloc[:,i], pred[:,i]))
 
+
 def save_model(model, model_filepath):
     '''
     Saves the model to disk
@@ -161,6 +163,7 @@ def save_model(model, model_filepath):
     temp_pickle = open(model_filepath, 'wb')
     pickle.dump(model, temp_pickle)
     temp_pickle.close()
+
 
 def main():
     if len(sys.argv) == 3:
@@ -182,7 +185,6 @@ def main():
         
         print('Evaluating model...')
         evaluate_model(model, X_test, Y_test)
-        
         
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
