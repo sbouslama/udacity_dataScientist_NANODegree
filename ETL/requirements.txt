@@ -1,4 +1,4 @@
 nltk
 sqlalchemy
-sklearn
+sklearn==0.20.4
 gensim

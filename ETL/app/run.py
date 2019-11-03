@@ -1,13 +1,14 @@
 import json
 import plotly
 import pandas as pd
-
+import sys
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 from sklearn.multioutput import MultiOutputClassifier
+sys.path.append('../')
 from utils import *
 
 app = Flask(__name__)
@@ -15,14 +16,13 @@ app = Flask(__name__)
 
 # load data
 engine = create_engine('sqlite:///../disaster_dataset.db')
-# df =pd.read_sql("SELECT * FROM disaster_dataset", engine)
+df =pd.read_sql("SELECT * FROM disaster_dataset", engine)
 
 # load model
 model = joblib.load("../models/classifier.pkl")
 
 X = df.iloc[:,1:2]
 Y = df.iloc[:,4:]
-
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')

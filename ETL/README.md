@@ -1,5 +1,6 @@
-**requirements**
-to install all the requirements needed in this project you should executes this command:
+**Requirements**
+
+To install all the requirements needed in this project you should executes this command:
 pip install -r requirements.txt
 
 **Project details**

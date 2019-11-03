@@ -104,4 +104,3 @@ class doc2vec_transform(BaseEstimator, TransformerMixin):
         
         emb = self.pipeline_d2v(X, dim=10)
         return emb
-
