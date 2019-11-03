@@ -15,10 +15,10 @@ app = Flask(__name__)
 
 # load data
 engine = create_engine('sqlite:///../disaster_dataset.db')
-df =pd.read_sql("SELECT * FROM disaster_dataset", engine)
+# df =pd.read_sql("SELECT * FROM disaster_dataset", engine)
 
 # load model
-model = joblib.load("../classifier.pkl")
+model = joblib.load("../models/classifier.pkl")
 
 X = df.iloc[:,1:2]
 Y = df.iloc[:,4:]
