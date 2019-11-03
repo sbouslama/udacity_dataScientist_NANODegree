@@ -17,9 +17,11 @@ Python script including the machine learning portion. In this pipeline, we will
 go through the following steps:
 
 1- spliting the data into a training and testing set
+
 2- creating the pipeline with scikit-learn's Pipeline and GridSearchCV
 to output a final model that uses the message column to predict classifications for 36
 categories (multi-output classification).
+
 3- exporting the model to a pickle file.
 
 - App:
