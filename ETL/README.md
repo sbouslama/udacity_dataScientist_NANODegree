@@ -7,7 +7,7 @@ pip install -r requirements.txt
 - etl_pipeline.py:
 
 Python script including the data pipeline for the dataset.
-It uses the ETL pipeline which is the Extact, Transforl and Load process.
+It uses the ETL pipeline which is the Extract, Transform and Load process.
 to run it, you can use the line command:
 
 python etl_pipeline.py disaster_messages.csv disaster_categories.csv DisasterResponse.db
