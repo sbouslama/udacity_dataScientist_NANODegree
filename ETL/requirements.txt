@@ -1,0 +1,4 @@
+nltk
+sqlalchemy
+sklearn==0.20.4
+gensim
