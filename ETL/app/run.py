@@ -15,15 +15,15 @@ app = Flask(__name__)
 
 
 # load data
-engine = create_engine('sqlite:///../disaster_dataset.db')
-df =pd.read_sql("SELECT * FROM disaster_dataset", engine)
+engine = create_engine('sqlite:///messages.db')
+df =pd.read_sql("SELECT * FROM messages", engine)
 
 # load model
-model = joblib.load("../models/classifier.pkl")
+model = joblib.load("classifier1.pkl")
 
 X = df.iloc[:,1:2]
 Y = df.iloc[:,4:]
-
+print(X.iloc[0,:].values)
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
 @app.route('/index')
@@ -73,12 +73,13 @@ def go():
     query = pd.DataFrame([query], columns=['message'])
     # use model to predict classification for query
     classification_labels = model.predict(query)[0]
+    print(model.predict(query))
     classification_results = dict(zip(df.columns[4:], classification_labels))
-
+     
     # This will render the go.html Please see that file. 
     return render_template(
         'go.html',
-        query=query,
+        query=query.message.values[0],
         classification_result=classification_results
     )
 

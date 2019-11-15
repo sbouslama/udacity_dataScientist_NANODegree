@@ -1,5 +1,6 @@
 import re
 import pandas as pd
+import numpy as np
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -54,7 +55,7 @@ class TextProcessor( BaseEstimator, TransformerMixin ):
     
     def transform(self, X, y=None):
         X['message'] = X['message'].apply(lambda x: self.process(x, allow_stopwords=True))
-        return X
+        return X['message']
 
 class doc2vec_transform(BaseEstimator, TransformerMixin):
     def __init__(self):

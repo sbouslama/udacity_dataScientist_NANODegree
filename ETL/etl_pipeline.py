@@ -35,7 +35,7 @@ def clean_data(df):
     return df
 
 
-def save_data(df, name='disaster_dataset'):
+def save_data(df, name='messages' ):
     engine = create_engine('sqlite:///{}.db'.format(name))
     df.to_sql(name, engine, index=False)
 
@@ -55,7 +55,7 @@ def main():
         # save the clean data
         print('SAVING DATA ...')
         save_data(df)
-    
+        
     else: 
         print('Please provide the filepath of the disaster messages and categories datasets '\
               'as arguments. \n\nExample: python '\

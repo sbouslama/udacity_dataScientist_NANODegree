@@ -1,5 +1,6 @@
  # import libraries
 import pandas as pd
+import numpy as np
 from sqlalchemy import create_engine
 import re
 import random
@@ -16,7 +17,7 @@ from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics import classification_report
 from sklearn.model_selection import GridSearchCV
-sys.path.append('../customClasses')
+sys.path.append('./customClasses')
 from utils import *
 
 def build_model(X_train,y_train):
@@ -28,9 +29,17 @@ def build_model(X_train,y_train):
         Returns a pipeline model that has gone through cleaning, word embedding using doc2vec, 
         and created into a ML model
     '''
+    # pipeline = Pipeline(steps = [
+    #    ('processing', TextProcessor()),
+    #    ('doc2vec',doc2vec_transform()),
+    #    ('clf', MultiOutputClassifier(estimator=RandomForestClassifier(n_estimators=10)))
+    # ],
+    # )
+
     pipeline = Pipeline(steps = [
        ('processing', TextProcessor()),
-       ('doc2vec',doc2vec_transform()),
+       ('count vect', CountVectorizer()),
+       ('tfidf',TfidfTransformer()),
        ('clf', MultiOutputClassifier(estimator=RandomForestClassifier(n_estimators=10)))
     ],
     )
@@ -43,7 +52,6 @@ def build_model(X_train,y_train):
 # #         'clf.__estimator__n_estimators':[10,20,30],
 
 #     }
-    
     cv = GridSearchCV(estimator=pipeline, param_grid=parameters)
     cv.fit(X_train,y_train)
     print('best parameters are:', cv.best_params_)
@@ -87,12 +95,13 @@ def main():
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         conn = create_engine('sqlite:///{}'.format(database_filepath))
         # *todo* make it generalised
-        df = pd.read_sql("SELECT * FROM disaster_dataset", conn)
+        df = pd.read_sql("SELECT * FROM {}".format(conn.table_names()[0]), conn)
+
         X = df.iloc[:,1:2]
         Y = df.iloc[:,4:]
         
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
-        
+
         print('Building model...')
         model = build_model(X_train,Y_train)
         
@@ -105,7 +114,7 @@ def main():
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
 
-        print('Trained model saved!')
+        # print('Trained model saved!')
 
     else:
         print('Please provide the filepath of the disaster messages database '\
