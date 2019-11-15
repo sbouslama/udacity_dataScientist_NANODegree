@@ -8,7 +8,7 @@ from plotly.graph_objs import Bar
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 from sklearn.multioutput import MultiOutputClassifier
-sys.path.append('../')
+sys.path.append('./customClasses')
 from utils import *
 
 app = Flask(__name__)
@@ -19,11 +19,11 @@ engine = create_engine('sqlite:///messages.db')
 df =pd.read_sql("SELECT * FROM messages", engine)
 
 # load model
-model = joblib.load("classifier1.pkl")
+model = joblib.load("classifier2.pkl")
 
 X = df.iloc[:,1:2]
 Y = df.iloc[:,4:]
-print(X.iloc[0,:].values)
+print(X.iloc[1,:].values)
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
 @app.route('/index')
