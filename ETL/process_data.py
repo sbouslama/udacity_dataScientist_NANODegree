@@ -59,6 +59,6 @@ def main():
     else: 
         print('Please provide the filepath of the disaster messages and categories datasets '\
               'as arguments. \n\nExample: python '\
-              'etl_pipeline.py ./messages.csv ./categories.csv')
+              'prooess_data.py ./messages.csv ./categories.csv')
 
 main()

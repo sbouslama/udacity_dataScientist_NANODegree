@@ -4,7 +4,7 @@ To install all the requirements needed in this project you should executes this 
 pip install -r requirements.txt
 
 **Project details**
-- etl_pipeline.py:
+- process_data.py:
 
 Python script including the data pipeline for the dataset.
 It uses the ETL pipeline which is the Extract, Transform and Load process.
