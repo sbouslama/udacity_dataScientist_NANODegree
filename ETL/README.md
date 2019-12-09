@@ -1,3 +1,7 @@
+**Overview**
+
+This project is for the Data Engineering section in the Udacity Data Science Nanodegree program. The bassis of this project is to look at data provided by FigureEight. The data are tweets and texts that were sent during real world disasters and can be labeled into at least one of 36 categories.
+
 **Requirements**
 
 To install all the requirements needed in this project you should executes this command:
