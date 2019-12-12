@@ -1,0 +1,8 @@
+wordcloud
+keras
+matplotlib
+gensim
+nltk
+scikit-learn 
+tqdm
+tensorflow
