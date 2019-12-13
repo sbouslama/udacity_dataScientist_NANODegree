@@ -6,6 +6,12 @@ To date, 25,000 volunteers have created profiles and opted in to receive emails 
 
 The objective: develop a method to recommend relevant questions to the professionals who are most likely to answer them.
 
+# Problem Statement
+
+The main goal here is to develop a method to recommend relevant questions to the professionals who are most likely to answer them.
+
+For that purpose, we will build a method for taking into account all the possible content features using Neural Network Architecture. This method will allow finding a probability mapping between question and professional entities
+
 # Try it
 
 ## install requirements
@@ -15,6 +21,8 @@ In order to run it you will also need to download nltk stopwords. So in python i
 `import nltk
  nltk.download('stopwords')
 ` 
+The data is provided by kaggle plateform via this <link>(https://www.kaggle.com/c/data-science-for-good-careervillage)
+
 
 # Project Details
 
@@ -22,4 +30,4 @@ In order to run it you will also need to download nltk stopwords. So in python i
 - utils: this folder contains a packaged useful functions
 - Model: this forlder cotains the model implemented 
 - Preprocessors: this folder contains all the features preprocessors for both the question and students entities. 
-- Recommender: this folder contains the recommendation engine developed for the compagany 
+- RecommendationEngine: this folder contains the recommendation engine developed for the compagany 
