@@ -19,9 +19,9 @@ class Recommandation:
 
         """
         self.que_feat_model = Model(
-            inputs=model.input[0], outputs=model.get_layer('lambda_160').output)
+            inputs=model.input[0], outputs=model.get_layer('lambda_3').output)
         self.pro_feat_model = Model(
-            inputs=model.input[1], outputs=model.get_layer('lambda_163').output)
+            inputs=model.input[1], outputs=model.get_layer('lambda_6').output)
         self.model = model
         # construct mappings from entity id to features
         self.que_dict = {row.values[0]: row.values[2:]
